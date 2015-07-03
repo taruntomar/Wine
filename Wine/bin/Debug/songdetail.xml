@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SongInfoModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Title>I'll be back</Title>
+  <Artists>Beatles</Artists>
+  <Lyrics>
+    <LyricsLine>
+      <Line> You know if you break my heart I'll go</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>But I'll be back again</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>Cos I told you once before goodbye</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>But I came back again</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>I love you so</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>I'm the one who wants you</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>Yes, I'm the one</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>Who wants you, oh ho, oh ho, oh</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>You could find better things to do</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>Than to break my heart again</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>This time I will try to show that I'm</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>Not trying to pretend</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>I thought that you would realize</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>That if I ran away from you</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>That you would want me too</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>But I got a big surprise</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>Oh ho, oh ho, oh</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>You could find better things to do</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>Than to break my heart again</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>This time I will try to show that I'm</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>Not trying to pretend</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>I wanna go but I hate to leave you,</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>You know I hate to leave you , oh ho, oh ho, oh</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>You, if you break my heart I'll go</Line>
+      <Time>2</Time>
+    </LyricsLine>
+    <LyricsLine>
+      <Line>But I'll be back again</Line>
+      <Time>2</Time>
+    </LyricsLine>
+  </Lyrics>
+</SongInfoModel>

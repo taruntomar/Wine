@@ -1,0 +1,15 @@
+c:\users\tarunkumar.tomar\documents\visual studio 2013\Projects\Wine\Wine\bin\Debug\Wine.exe.config
+c:\users\tarunkumar.tomar\documents\visual studio 2013\Projects\Wine\Wine\bin\Debug\Wine.exe
+c:\users\tarunkumar.tomar\documents\visual studio 2013\Projects\Wine\Wine\bin\Debug\Wine.pdb
+c:\users\tarunkumar.tomar\documents\visual studio 2013\Projects\Wine\Wine\obj\Debug\Wine.csprojResolveAssemblyReference.cache
+c:\users\tarunkumar.tomar\documents\visual studio 2013\Projects\Wine\Wine\obj\Debug\MainWindow.baml
+c:\users\tarunkumar.tomar\documents\visual studio 2013\Projects\Wine\Wine\obj\Debug\MainWindow.g.cs
+c:\users\tarunkumar.tomar\documents\visual studio 2013\Projects\Wine\Wine\obj\Debug\App.g.cs
+c:\users\tarunkumar.tomar\documents\visual studio 2013\Projects\Wine\Wine\obj\Debug\Wine_MarkupCompile.cache
+c:\users\tarunkumar.tomar\documents\visual studio 2013\Projects\Wine\Wine\obj\Debug\Wine.g.resources
+c:\users\tarunkumar.tomar\documents\visual studio 2013\Projects\Wine\Wine\obj\Debug\Wine.Properties.Resources.resources
+c:\users\tarunkumar.tomar\documents\visual studio 2013\Projects\Wine\Wine\obj\Debug\Wine.csproj.GenerateResource.Cache
+c:\users\tarunkumar.tomar\documents\visual studio 2013\Projects\Wine\Wine\obj\Debug\Wine.exe
+c:\users\tarunkumar.tomar\documents\visual studio 2013\Projects\Wine\Wine\obj\Debug\Wine.pdb
+C:\Users\tarunkumar.tomar\Documents\Visual Studio 2013\Projects\Wine\Wine\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\tarunkumar.tomar\Documents\Visual Studio 2013\Projects\Wine\Wine\obj\Debug\Wine_MarkupCompile.lref

@@ -1,0 +1,272 @@
+﻿<Window x:Class="Wine.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:tvm="clr-namespace:Wine.TreeViewModel"
+        Title="Wine Media Player" Height="550" Width="725">
+    <Window.Resources>
+
+        <Style x:Key="SliderRepeatButton" TargetType="RepeatButton">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="IsTabStop" Value="false" />
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border  BorderThickness="1" BorderBrush="Black" Background="Black" Height="3"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SliderRepeatButton1" TargetType="RepeatButton">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border SnapsToDevicePixels="True" Background="Green"  BorderThickness="1" BorderBrush="YellowGreen" Height="3"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SliderThumb" TargetType="Thumb">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Ellipse Height="10" Width="10" Fill="Green"></Ellipse>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="Slider"  TargetType="Slider">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <Track Grid.Row="1" x:Name="PART_Track"   >
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource SliderRepeatButton1}"  Command="Slider.DecreaseLarge" />
+                    </Track.DecreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource SliderThumb}"  />
+                    </Track.Thumb>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource SliderRepeatButton}" Command="Slider.IncreaseLarge" />
+                    </Track.IncreaseRepeatButton>
+                </Track>
+            </Grid>
+        </ControlTemplate>
+
+        <Style x:Key="Horizontal_Slider" TargetType="Slider">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Horizontal">
+                    <Setter Property="MinHeight" Value="21" />
+                    <Setter Property="MinWidth" Value="104" />
+                    <Setter Property="Template" Value="{StaticResource Slider}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" >
+            <StackPanel Orientation="Horizontal" >
+                <TextBox x:Name="DirectoryAddressTextBox" Width="200" Margin="5 5 5 5"></TextBox>
+                <Button Click="ChangeDirectory_Click" Margin="5 5 5 5">
+                    <Image Source="icons/openfolderHS.png" />
+                </Button>
+                <Button Click="Refresh_Click" Margin="5 5 5 5">
+                    <Image Source="icons/RefreshDocViewHS.png" />
+                </Button>
+                <ProgressBar x:Name="processbar" Margin="5 5 5 5" Width="100" ></ProgressBar>
+            </StackPanel>
+        </Grid>
+       
+        <Grid Grid.Row="1" >
+          
+            <Grid.ColumnDefinitions  >
+                <ColumnDefinition Width="100*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="100*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="100*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="100*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <Grid Grid.Row="0"  Background="#E8E8E8" >
+                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center">Artist</TextBlock>
+            </Grid>
+            <Grid Grid.Row="1"  Background="WhiteSmoke">
+                <TreeView x:Name="ArtistTree" Padding="-15,5,0,0"  Grid.Row="1" SelectedItemChanged="Artisttree_SelectedItemChanged" >
+                    <TreeView.Resources>
+                        <HierarchicalDataTemplate  DataType="{x:Type tvm:HierarchicalObjectViewModel}"
+                                          ItemsSource="{Binding Path=Items}"
+                                        
+                                          >
+                            <StackPanel Orientation="Horizontal" ContextMenu="{Binding Path=ContextMenuObj}" >
+                                <Image Width="16" Height="16" 
+           Margin="3,2" Source="{Binding Path=Image}" />
+                                <TextBlock Text="{Binding Path=Name}" Visibility="{Binding Path=TextBlockVisible}" >
+                                </TextBlock>
+                                <TextBox Text="{Binding Path=Name}" Visibility="{Binding Path=TextBoxVisible}"  >
+                                </TextBox>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.Resources>
+                </TreeView>
+            </Grid>
+            </Grid>
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Black" ShowsPreview="True" Width="2" />
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"  Background="#E8E8E8" >
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" >Albums</TextBlock>
+                </Grid>
+                <Grid Grid.Row="1" Background="LightGray">
+                    <TreeView x:Name="AlbumTree" Padding="-15,5,0,0"  Grid.Row="1" SelectedItemChanged="Albumtree_SelectedItemChanged" >
+                        <TreeView.Resources>
+                            <HierarchicalDataTemplate  DataType="{x:Type tvm:HierarchicalObjectViewModel}"
+                                          ItemsSource="{Binding Path=Items}"
+                                        
+                                          >
+                                <StackPanel Orientation="Horizontal" ContextMenu="{Binding Path=ContextMenuObj}" >
+                                    <Image Width="16" Height="16" 
+           Margin="3,2" Source="{Binding Path=Image}" />
+                                    <TextBlock Text="{Binding Path=Name}" Visibility="{Binding Path=TextBlockVisible}" >
+                                    </TextBlock>
+                                    <TextBox Text="{Binding Path=Name}" Visibility="{Binding Path=TextBoxVisible}"  >
+                                    </TextBox>
+                                </StackPanel>
+                            </HierarchicalDataTemplate>
+                        </TreeView.Resources>
+                    </TreeView>
+                </Grid>
+            </Grid>
+            <GridSplitter Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Black" ShowsPreview="True" Width="2" />
+            <Grid Grid.Column="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"  Background="#E8E8E8">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" >Songs</TextBlock>
+                </Grid>
+                <Grid Grid.Row="1"  Background="Gray">
+                    <TreeView x:Name="SongTree" Padding="-15,5,0,0"  Grid.Row="1" SelectedItemChanged="Songtree_SelectedItemChanged" MouseDoubleClick="SongTree_MouseDoubleClick" >
+                        <TreeView.Resources>
+                            <HierarchicalDataTemplate  DataType="{x:Type tvm:HierarchicalObjectViewModel}"
+                                          ItemsSource="{Binding Path=Items}"
+                                        
+                                          >
+                                <StackPanel Orientation="Horizontal" ContextMenu="{Binding Path=ContextMenuObj}" >
+                                    <Image Width="16" Height="16" 
+           Margin="3,2" Source="{Binding Path=Image}" />
+                                    <TextBlock Text="{Binding Path=Name}" Visibility="{Binding Path=TextBlockVisible}" >
+                                    </TextBlock>
+                                    <TextBox Text="{Binding Path=Name}" Visibility="{Binding Path=TextBoxVisible}"  >
+                                    </TextBox>
+                                </StackPanel>
+                            </HierarchicalDataTemplate>
+                        </TreeView.Resources>
+                    </TreeView>
+                </Grid>
+            </Grid>
+            <GridSplitter Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Black" ShowsPreview="True" Width="2" />
+            <Grid Grid.Column="6">
+                <!--<Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>-->
+                <!--<Grid Grid.Row="0"  Background="#E8E8E8">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" >Info/Lyics</TextBlock>
+                </Grid>-->
+                <TabControl>
+                    <TabItem Header="Info">
+                        <StackPanel Grid.Row="1" Orientation="Vertical" x:Name="m_songinfodisplaypanel"  HorizontalAlignment="Center">
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Lyrics"></TabItem>
+                </TabControl>
+                
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" Background="WhiteSmoke">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid  Grid.Column="0" >
+                <Image x:Name="albumartbox" Margin="5,5,0,5" Source="icons/cd3.png"> </Image>
+            </Grid>
+            <Grid Grid.Column="1"  Margin="10 10 10 10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="16"></RowDefinition>
+                <RowDefinition Height="26"></RowDefinition>
+                <RowDefinition Height="24"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Margin="10,0,0,0">
+                    <Grid.ColumnDefinitions  >
+                    <ColumnDefinition Width="100*" />
+                    <ColumnDefinition Width="100*" />
+                    <ColumnDefinition Width="100*" />
+                </Grid.ColumnDefinitions>
+                
+                    
+                    <TextBlock x:Name="NowPlayingLabel" Grid.Column="0"  HorizontalAlignment="Left"></TextBlock>
+                    <TextBlock x:Name="LyricsLineTextBlock" Grid.Column="1"  HorizontalAlignment="Center"></TextBlock>
+                    <StackPanel HorizontalAlignment="Right" Grid.Column="2" Orientation="Horizontal">
+                        <TextBlock x:Name="TimeEclapsedLabel"></TextBlock>
+                        <TextBlock x:Name="TotalTimeLabel"></TextBlock>
+                    </StackPanel>
+
+
+                </Grid>
+
+                <Slider x:Name="m_seekbar" Style="{StaticResource Horizontal_Slider}" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Row="1" Thumb.DragStarted="sliProgress_DragStarted" Thumb.DragCompleted="m_seekbar_DragOver" IsMoveToPointEnabled="True" ValueChanged="m_seekbar_ValueChanged"/>
+            <Grid Grid.Row="2" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200*"></ColumnDefinition>
+                        <ColumnDefinition Width="100*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,0,0,0">
+                            <Button x:Name="PlayPauseButton" Click="PlayPause_Click">
+                                <Image Source="icons/PlayHS.png" />
+                            </Button>
+                            <Button x:Name="StopButton" Click="Stop_Click">
+                                <Image Source="icons/StopHS.png" />
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1"  HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,0,0">
+                            <Image Source="icons/vol_low.png"></Image>
+                        <Slider x:Name="volumeslider" Width="100" Minimum="0" Value="0.5" Maximum="1" Thumb.DragStarted="volbar_DragStarted" Thumb.DragCompleted="m_volbar_DragOver" IsMoveToPointEnabled="True" ValueChanged="m_volbar_ValueChanged"></Slider>
+                       </StackPanel>
+            </Grid>
+        </Grid>
+        </Grid>
+    </Grid>
+</Window>
